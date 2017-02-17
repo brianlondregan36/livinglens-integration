@@ -1,6 +1,5 @@
 <div id="info">Please explain your feelings towards the video you just watched. The video recording should be at least 5 seconds long and no more than 6 minutes long.</div>
 <br/><br/>
-
 <div id="livinglens-media-capture" 
 	data-apikey="A58E904C-A3F8-4465-B4EF-73E3D3A9839C" 
 	data-clientid="56d41cbef25371137ccd27b3" 
@@ -16,7 +15,17 @@
 
 
 
+
+
 <script>
+
+	/* ASSUMPTIONS: 
+	1. you were given your own apikey and clientid from LivingLens
+	2. your survey has a forward navigation button and its id is "forwardbutton"
+	3. this page has a Multi with id "td" and one answer code "y" with a label like "Check this box if you do not see the recording frame"
+	4. this page has an Open Text with id "videoId" hidden using CSS
+	5. you build out the filters array using the questions and answers you want to pass to LivingLens
+	*/
 
 	fb = document.getElementById('forwardbutton');
 	td = document.getElementById('td_y'); 
@@ -52,16 +61,16 @@
 	
 	var filters = [
 		{
-			group: "AnnualMembership", 
-			filters: ["^f('q1').valueLabel()^"]
+			group: "Question text or title goes here", 
+			filters: ["^f('qid').valueLabel()^"]
 		},
 		{
-			group: "Trips", 
-			filters: ["^f('q3')^"]
+			group: "Question text or title goes here", 
+			filters: ["^f('qid')^"]
 		},
 		{
-			group: "NetPromoterScore", 
-			filters: ["^f('q4')['1']^"]
+			group: "Question text or title goes here", 
+			filters: ["^f('qid')^"]
 		}
 	];
 		
@@ -75,16 +84,16 @@
 			document.getElementById('info').style.display = "none";
 		});
 		mediaCapture.onEvent('noRecordingDevice', function(){
-			PostError("No Recording Device Found");			
+			PostError("ERROR: No Recording Device Found");			
 		});
 		mediaCapture.onEvent('noMicrophone', function(){
-			PostError("No Microphone Device Found");
+			PostError("ERROR: No Microphone Device Found");
 		});
 		mediaCapture.onEvent('uploadAborted', function(){
-			PostError("Upload Aborted: network related issues or user navigated away");
+			PostError("ERROR: Upload Aborted - network related issues or user navigated away");
 		});
 		mediaCapture.onEvent('uploadFailed', function(){
-			PostError("Upload Failed.");
+			PostError("ERROR: Upload Failed");
 		});
 	};
 	
@@ -117,6 +126,7 @@
 		});
 		
 		document.getElementById('videoId').value = errorMsg;
+		td.removeEventListener("click", checkToggle);
 		toggle(true);
 	}
 	
