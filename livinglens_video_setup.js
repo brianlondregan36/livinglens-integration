@@ -1,8 +1,8 @@
 <div id="info">Please explain your feelings towards the video you just watched. The video recording should be at least 5 seconds long and no more than 6 minutes long.</div>
 <br/><br/>
 <div id="livinglens-media-capture" 
-	data-apikey="A58E904C-A3F8-4465-B4EF-73E3D3A9839C" 
-	data-clientid="56d41cbef25371137ccd27b3" 
+	data-apikey="xxxxxx" 
+	data-clientid="xxxxxxx" 
 	data-media="video" 
 	data-respondentid="^CurrentPID()+'_'+CurrentID()^" 
 	data-countrycode="US" 
