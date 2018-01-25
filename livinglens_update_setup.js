@@ -1,6 +1,6 @@
 <div id="livinglens-media-capture" 
-	data-apikey="xxxxxxxxx" 
-	data-clientid="xxxxxx"
+	data-apikey="xxxxxxx" 
+	data-clientid="xxxxxxx"
 	data-media="update" 
 	data-respondentid="^CurrentPID()+'_'+CurrentID()^" 
 	data-countrycode="US"
